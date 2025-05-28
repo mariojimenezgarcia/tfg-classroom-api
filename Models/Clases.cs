@@ -109,5 +109,20 @@ namespace apiClassroom.Models
             public string email { get; set; }
             public int rol { get; set; }
         }
+        public class Clase
+        {
+            public int id { get; set; }
+            public string nombre { get; set; }
+            public string codigo { get; set; }
+            public int profesorId { get; set; }
+        }
+
+        public class SolicitudClase
+        {
+            public int id { get; set; }
+            public int alumnoId { get; set; }
+            public int claseId { get; set; }
+            public DateTime fechaSolicitud { get; set; }
+        }
     }
 }
