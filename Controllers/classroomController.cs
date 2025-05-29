@@ -46,18 +46,16 @@ namespace apiClassroom.Controllers
             var resultado = new Clases.LoginResponse();
             var error = new Clases.Error();
             JObject response = new JObject();
-            string ip_publica;
-            int Id = -1;
-
+            int Id = 0;
+            //encripta la password para guaradarla codificada en la base de datos
             var claveencriptada = Encriptar(login.password);
-
+            //si email o password vienen null
             if (string.IsNullOrWhiteSpace(login.email) || string.IsNullOrWhiteSpace(login.password))
             {
                 MandarError((int)Errores.Error.DatosInvalidos, listaerrores[Errores.Error.DatosInvalidos]);
             }
             else
             {
-                ip_publica = GetUserIP();
                 using (var conexion = new SqlConnection(ConexionBBDD))
 
                 {
@@ -65,11 +63,8 @@ namespace apiClassroom.Controllers
                     {
                         conexion.Open();
 
-                        // —————— tu lógica de lectura de usuario ——————
+                        // lógica de lectura de usuario
                         string clave = "";
-                        int intentosFallidos = 0;
-                        DateTime? fecha_cad_usuario = null;
-                        bool cuenta_bloqueada = false;
                         int rol = 0;
 
                         const string consulta = "SELECT * FROM usuarios WHERE email=@email";
@@ -83,29 +78,19 @@ namespace apiClassroom.Controllers
                                     Id = (int)lector["id"];
                                     clave = (string)lector["password"];
                                     rol = (int)lector["rol"];
-                                    intentosFallidos = (int)lector["intentos_fallidos"];
-                                    cuenta_bloqueada = (bool)lector["cuenta_bloqueada"];
-                                    if (lector["fecha_cad_usuario"] != DBNull.Value)
-                                        fecha_cad_usuario = (DateTime)lector["fecha_cad_usuario"];
                                     resultado.email = (string)lector["email"];
                                 }
                                 else
                                 {
-                                    MandarError((int)Errores.Error.UsuarioContrasenaIncorrecto,
-                                                listaerrores[Errores.Error.UsuarioContrasenaIncorrecto]);
+                                    MandarError((int)Errores.Error.UsuarioIncorrecto,
+                                                listaerrores[Errores.Error.UsuarioIncorrecto]);
                                 }
                             }
                         }
-
-
-                        if (fecha_cad_usuario.HasValue && DateTime.Now > fecha_cad_usuario.Value)
-                            MandarError((int)Errores.Error.UsuarioCaducado, listaerrores[Errores.Error.UsuarioCaducado]);
-                        else if (cuenta_bloqueada)
-                            MandarError((int)Errores.Error.UsuarioBloqueado, listaerrores[Errores.Error.UsuarioBloqueado]);
-                        else if (claveencriptada != clave)
+                        //verificamos que la clave BBDD es la misma a la introdcida
+                        if (claveencriptada != clave)
                         {
-                            // … tu lógica de intentos fallidos y bloqueo …
-                            MandarError((int)Errores.Error.UsuarioContrasenaIncorrecto, listaerrores[Errores.Error.UsuarioContrasenaIncorrecto]);
+                            MandarError((int)Errores.Error.ContrasenaIncorrecto, listaerrores[Errores.Error.ContrasenaIncorrecto]);
                         }
                         else
                         {
@@ -113,9 +98,8 @@ namespace apiClassroom.Controllers
                             var claims = new[]
                             {
                             new Claim(JwtRegisteredClaimNames.Sub, Id.ToString()),
-                            new Claim(JwtRegisteredClaimNames.UniqueName, resultado.email),
                             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                            new Claim("rol",                             rol.ToString())
+                            new Claim("rol",   rol.ToString())
 
                         };
 
@@ -144,10 +128,6 @@ namespace apiClassroom.Controllers
                     }
                 }
             }
-
-            // Si hubo errores, limpia el token
-            if (errorList.Count > 0)
-                resultado.token = "";
 
             resultado.error = errorList;
             return JObject.Parse(JsonConvert.SerializeObject(resultado));
@@ -239,95 +219,7 @@ namespace apiClassroom.Controllers
             respuesta["permisos"] = JArray.FromObject(permisos);
             return respuesta;
         }
-        //para crear clase (solo profesor)
-        [HttpPost]
-        [Route("CrearClase")]
-        public IHttpActionResult CrearClase([FromBody] string nombreClase)
-        {
-            var headers = Request.Headers;
-            var token = headers.Authorization.Parameter;
-            int idUsuario = JwtUtils.ExtraerIdUsuario(token);
-            int rol = JwtUtils.ExtraerRol(token);
-
-            if (rol != 1)
-                return BadRequest("Solo los profesores pueden crear clases.");
-
-            string codigo = GenerarCodigo();
-            int claseId;
-
-            using (var conexion = new SqlConnection(ConexionBBDD))
-            {
-                conexion.Open();
-                string sql = "INSERT INTO clases (nombre, codigo, profesorId) OUTPUT INSERTED.id VALUES (@nombre, @codigo, @profesorId)";
-                using (var comando = new SqlCommand(sql, conexion))
-                {
-                    comando.Parameters.AddWithValue("@nombre", nombreClase);
-                    comando.Parameters.AddWithValue("@codigo", codigo);
-                    comando.Parameters.AddWithValue("@profesorId", idUsuario);
-                    claseId = (int)comando.ExecuteScalar();
-                }
-            }
-            return Ok(new { id = claseId, nombre = nombreClase, codigo, profesorId = idUsuario });
-        }
-
-        private static string GenerarCodigo(int length = 6)
-        {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var random = new Random();
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
-
-        //unirse a clase
-        [HttpPost]
-        [Route("UnirseClase")]
-        public IHttpActionResult UnirseClase([FromBody] string codigoClase)
-        {
-            var headers = Request.Headers;
-            var token = headers.Authorization.Parameter;
-            int idUsuario = JwtUtils.ExtraerIdUsuario(token);
-            int rol = JwtUtils.ExtraerRol(token);
-
-            if (rol != 0)
-                return BadRequest("Solo los alumnos pueden unirse a clases.");
-
-            int claseId;
-            using (var conexion = new SqlConnection(ConexionBBDD))
-            {
-                conexion.Open();
-                string sql = "SELECT id FROM clases WHERE codigo=@codigo";
-                using (var comando = new SqlCommand(sql, conexion))
-                {
-                    comando.Parameters.AddWithValue("@codigo", codigoClase);
-                    var result = comando.ExecuteScalar();
-                    if (result == null)
-                        return BadRequest("Código de clase no válido.");
-                    claseId = (int)result;
-                }
-
-                // Comprueba que el alumno NO esté ya en la clase
-                string checkSql = "SELECT COUNT(*) FROM solicitudesclase WHERE alumnoId=@alumnoId AND claseId=@claseId";
-                using (var checkCmd = new SqlCommand(checkSql, conexion))
-                {
-                    checkCmd.Parameters.AddWithValue("@alumnoId", idUsuario);
-                    checkCmd.Parameters.AddWithValue("@claseId", claseId);
-                    int count = (int)checkCmd.ExecuteScalar();
-                    if (count > 0)
-                        return BadRequest("Ya estás en esta clase.");
-                }
-
-                string sqlInsert = "INSERT INTO solicitudesclase (alumnoId, claseId, aprobado, fechaSolicitud) VALUES (@alumnoId, @claseId, @aprobado, @fechaSolicitud)";
-                using (var comando = new SqlCommand(sqlInsert, conexion))
-                {
-                    comando.Parameters.AddWithValue("@alumnoId", idUsuario);
-                    comando.Parameters.AddWithValue("@claseId", claseId);
-                    comando.Parameters.AddWithValue("@aprobado", true); // Se acepta directamente
-                    comando.Parameters.AddWithValue("@fechaSolicitud", DateTime.Now);
-                    comando.ExecuteNonQuery();
-                }
-            }
-            return Ok(new { mensaje = "¡Te has unido a la clase correctamente!", claseId });
-        }
+      
         //_________________________________________________________________________________________________________________________________________
 
 
@@ -585,60 +477,6 @@ namespace apiClassroom.Controllers
               return json;
           }*/
 
-
-        #region Funciones internas
-
-        #region Login_ApiKey
-
-        public string GetUserIP()
-        {
-            HttpRequestMessage request = null;
-            request = request ?? Request;
-
-            // Web-hosting. Needs reference to System.Web.dll
-
-            if (request.Properties.ContainsKey("MS_HttpContext"))
-            {
-                dynamic ctx = request.Properties["MS_HttpContext"];
-
-                if (ctx != null)
-                {
-                    return ctx.Request.UserHostAddress;
-                }
-            }
-
-            // Self-hosting. Needs reference to System.ServiceModel.dll.
-            if (request.Properties.ContainsKey("System.ServiceModel.Channels.RemoteEndpointMessageProperty"))
-            {
-                dynamic remoteEndpoint = request.Properties["System.ServiceModel.Channels.RemoteEndpointMessageProperty"];
-
-                if (remoteEndpoint != null)
-                {
-                    return remoteEndpoint.Address;
-                }
-            }
-
-            // Self-hosting using Owin. Needs reference to Microsoft.Owin.dll.
-            if (request.Properties.ContainsKey("MS_OwinContext"))
-            {
-                dynamic owinContext = request.Properties["MS_OwinContext"];
-
-                if (owinContext != null)
-                {
-                    return owinContext.Request.RemoteIpAddress;
-                }
-            }
-
-            return null;
-        }
-
-        #endregion Login_ApiKey
-
-        #region Generales
-   
-
-
-
         private void MandarError(int code, string description)
         {
             var err = new Clases.Error();
@@ -656,10 +494,5 @@ namespace apiClassroom.Controllers
             byte[] encriptado = System.Text.Encoding.Unicode.GetBytes(clave);
             return Convert.ToBase64String(encriptado);
         }
-
-
-        #endregion
-
-        #endregion
     }
 }
