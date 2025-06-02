@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+using System.Web.Http.Cors;    // <— Necesario para EnableCorsAttribute
 
 namespace apiClassroom
 {
@@ -9,9 +7,15 @@ namespace apiClassroom
     {
         public static void Register(HttpConfiguration config)
         {
-            // Configuración y servicios de Web API
+            // 1) Habilitamos CORS globalmente: 
+           
+            var corsAttr = new EnableCorsAttribute(
+                origins: "http://localhost:4200",  
+                headers: "*",                      
+                methods: "*");             
+            config.EnableCors(corsAttr);
 
-            // Rutas de Web API
+            // 2) Resto de configuración de rutas
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -19,6 +23,9 @@ namespace apiClassroom
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // … cualquier otra configuración global
         }
     }
 }
+

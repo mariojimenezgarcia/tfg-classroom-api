@@ -25,7 +25,7 @@ namespace apiClassroom.Controllers
         {
             var headers = Request.Headers;
             var token = headers.Authorization.Parameter;
-            int idUsuario = JwtUtils.ExtraerIdUsuario(token);
+            int id = JwtUtils.ExtraerIdUsuario(token);
             int rol = JwtUtils.ExtraerRol(token);
 
             if (rol != 1)
@@ -37,16 +37,16 @@ namespace apiClassroom.Controllers
             using (var conexion = new SqlConnection(ConexionBBDD))
             {
                 conexion.Open();
-                string sql = "INSERT INTO clases (nombre, codigo, profesorId) OUTPUT INSERTED.id VALUES (@nombre, @codigo, @profesorId)";
+                string sql = "INSERT INTO clases (nombre, codigo, UsuariosId) OUTPUT INSERTED.id VALUES (@nombre, @codigo, @UsuariosId)";
                 using (var comando = new SqlCommand(sql, conexion))
                 {
                     comando.Parameters.AddWithValue("@nombre", nombreClase);
                     comando.Parameters.AddWithValue("@codigo", codigo);
-                    comando.Parameters.AddWithValue("@profesorId", idUsuario);
+                    comando.Parameters.AddWithValue("@UsuariosId", id);
                     claseId = (int)comando.ExecuteScalar();
                 }
             }
-            return Ok(new { id = claseId, nombre = nombreClase, codigo, profesorId = idUsuario });
+            return Ok(new { id = claseId, nombre = nombreClase, codigo, UsuariosId = id });
         }
 
         private static string GenerarCodigo(int length = 6)
