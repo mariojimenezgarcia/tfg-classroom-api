@@ -31,69 +31,6 @@ namespace apiClassroom.Models
             public string descripcion { get; set; }
         }
 
-        public class PermisosRequest
-        {
-            public string token { get; set; }
-        }
-
-
-        public class Usuario
-        {
-            public int id { get; set; }
-            public string nombreUsuario { get; set; }
-            public string emailUsuario { get; set; }
-            public override string ToString()
-            {
-                return $"ID: {id}, Nombre de Usuario: {nombreUsuario}, Email de Usuario: {emailUsuario}";
-            }
-        }
-
-        public class CorreoRequest
-        {
-            public string Destinatario { get; set; }
-            public string Asunto { get; set; }
-            public string Cuerpo { get; set; }
-        }
-
-        public class CodigoRequest
-        {
-            public string codigo { get; set; }
-            public string idUsuario { get; set; }
-        }
-
-        [Serializable]
-        public class CodigoResponse
-        {
-            public string codigo { get; set; }
-            public List<Error> error { get; set; }
-        }
-
-        public class passwordRequest
-        {
-            public string idUsuario { get; set; }
-            public string password { get; set; }
-            public string passwordRepeat { get; set; }
-            public string codigoValidacion { get; set; }
-        }
-
-        [Serializable]
-        public class passwordResponse
-        {
-            public string password { get; set; }
-            public List<Error> error { get; set; }
-        }
-        public class UsuarioEmailRequest
-        {
-            public string email { get; set; }
-        }
-
-        [Serializable]
-        public class tokenEmailResponse
-        {
-            public string token { get; set; }
-            public int idUsuario { get; set; }
-            public List<Error> error { get; set; }
-        }
         public class UsuarioRequest
         {
             public string nombre { get; set; }
@@ -109,20 +46,78 @@ namespace apiClassroom.Models
             public string email { get; set; }
             public int rol { get; set; }
         }
-        public class Clase
+        public class CrearClaseRequest
         {
-            public int id { get; set; }
             public string nombre { get; set; }
-            public string codigo { get; set; }
-            public int profesorId { get; set; }
+            public string curso { get; set; }
+            public string aula { get; set; }
+            public string color { get; set; }
+            public string token { get; set; }
         }
 
-        public class SolicitudClase
+        // 2. Clase para la respuesta de CrearClase
+        public class CrearClaseResponse
         {
-            public int id { get; set; }
-            public int alumnoId { get; set; }
-            public int claseId { get; set; }
-            public DateTime fechaSolicitud { get; set; }
+            // Id de la clase recién creada
+            public int Id { get; set; }
+
+            // El código de acceso generado de 7 dígitos
+            public string CodigoAcceso { get; set; }
+
+            // Lista de errores (si los hay)
+            public List<Error> error { get; set; } = new List<Error>();
+        }
+        public class UnirseClaseRequest
+        {
+            public string token { get; set; }
+            public string codigoAcceso { get; set; }
+        }
+
+        // Response de unirse a una clase
+        public class UnirseClaseResponse
+        {
+            // Mensaje de éxito, p.ej. “Usuario registrado en la clase”
+            public string mensaje { get; set; }
+
+            // Lista de errores (vacía si todo ha ido bien)
+            public List<Error> error { get; set; } = new List<Error>();
+        }
+        public class AnuncioRequest
+        {
+            public string token { get; set; }
+            public string contenido { get; set; }
+            public int idClase { get; set; }
+        }
+
+        public class AnuncioResponse
+        {
+            public string nombreUsuario { get; set; }
+            public string contenido { get; set; }
+            public string fechaCreacion { get; set; }
+            public List<Error> error { get; set; } = new List<Error>();
+        }
+        public class VisualizarAnunciosRequest
+        {
+            public string token { get; set; }
+            public int idClase { get; set; }
+        }
+
+        // DTO para devolver cada anuncio
+        public class AnuncioData
+        {
+            public string nombreUsuario { get; set; }
+            public string contenido { get; set; }
+            public string fechaCreacion { get; set; }
+        }
+
+        // Response de visualizar anuncios
+        public class VisualizarAnunciosResponse
+        {
+            // Lista de anuncios encontrados
+            public List<AnuncioData> anuncios { get; set; } = new List<AnuncioData>();
+
+            // Lista de errores (vacía si todo OK)
+            public List<Error> error { get; set; } = new List<Error>();
         }
     }
 }

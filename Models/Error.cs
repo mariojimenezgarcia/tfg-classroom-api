@@ -18,7 +18,7 @@ namespace apiClassroom.Models
             ErrorEnBBDD = 108, // Cuando hay un error en la consulta de la BBDD
             UsuarioSinPermisos = 114, //El usuario no tiene permisos
             DatosIntroducidosMalBBDD = 116, //Se han introducido mal los datos en la BBDD
-           
+            TokenInvalido=109,
         }
 
         public static Dictionary<Error, string> GetListaErrores()
@@ -28,9 +28,10 @@ namespace apiClassroom.Models
             errores.Add(Error.ContrasenaIncorrecto, "Contraseña incorrecta "); // Cuando el usuario o la clave no son correctos
             errores.Add(Error.DatosInvalidos, "Datos invalidos"); // Cuando alguno de los datos que se esperan vienen a null o vacíos
             errores.Add(Error.ErrorEnBBDD, "Error en el acceso a los datos"); // Cuando hay un error en la consulta de la BBDD
-            errores.Add(Error.UsuarioSinPermisos, "El usuario no tiene ningún permiso");
+            errores.Add(Error.UsuarioSinPermisos, "El usuario no tiene permiso");
             errores.Add(Error.DatosIntroducidosMalBBDD, "Los datos introducidos en la BBDD no son correctos");
-         
+            errores.Add(Error.TokenInvalido, "token o encontrado o mal formado");
+
 
             return errores;
         }
