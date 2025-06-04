@@ -3,23 +3,27 @@
   "WorkspaceRootPath": "D:\\DAM\\c#\\apiClassroom\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|d:\\dam\\c#\\apiclassroom\\controllers\\anuncios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\anuncios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|d:\\dam\\c#\\apiclassroom\\controllers\\classroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|D:\\DAM\\c#\\apiClassroom\\controllers\\classroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\classroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|D:\\DAM\\c#\\apiClassroom\\models\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|d:\\dam\\c#\\apiclassroom\\controllers\\notascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\notascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|D:\\DAM\\c#\\apiClassroom\\controllers\\clasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\clasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|d:\\dam\\c#\\apiclassroom\\controllers\\tareascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|D:\\DAM\\c#\\apiClassroom\\models\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|d:\\dam\\c#\\apiclassroom\\controllers\\anuncioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\anuncioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|D:\\DAM\\c#\\apiClassroom\\controllers\\tareascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\tareascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -43,7 +47,7 @@
       "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|d:\\dam\\c#\\apiclassroom\\controllers\\tareascontroller.cs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|D:\\DAM\\c#\\apiClassroom\\controllers\\tareascontroller.cs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\tareascontroller.cs||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -54,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,12 +78,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "anuncios.cs",
-              "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Controllers\\anuncios.cs",
-              "RelativeDocumentMoniker": "Controllers\\anuncios.cs",
-              "ToolTip": "D:\\DAM\\c#\\apiClassroom\\Controllers\\anuncios.cs",
-              "RelativeToolTip": "Controllers\\anuncios.cs",
+              "DocumentIndex": 1,
+              "Title": "notasController.cs",
+              "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Controllers\\notasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\notasController.cs",
+              "ToolTip": "D:\\DAM\\c#\\apiClassroom\\Controllers\\notasController.cs",
+              "RelativeToolTip": "Controllers\\notasController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAgwBcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T16:31:51.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "anunciosController.cs",
+              "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Controllers\\anunciosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\anunciosController.cs",
+              "ToolTip": "D:\\DAM\\c#\\apiClassroom\\Controllers\\anunciosController.cs",
+              "RelativeToolTip": "Controllers\\anunciosController.cs",
               "ViewState": "AgIAAK8AAAAAAAAAAAAIwMwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-03T21:17:10.444Z",
@@ -87,20 +104,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "classroomController.cs",
               "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Controllers\\classroomController.cs",
               "RelativeDocumentMoniker": "Controllers\\classroomController.cs",
               "ToolTip": "D:\\DAM\\c#\\apiClassroom\\Controllers\\classroomController.cs",
               "RelativeToolTip": "Controllers\\classroomController.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAuwIQAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAA8wCkAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T12:55:11.544Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "packages.config",
               "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\packages.config",
               "RelativeDocumentMoniker": "packages.config",
@@ -112,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "WebApiConfig.cs",
               "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\App_Start\\WebApiConfig.cs",
               "RelativeDocumentMoniker": "App_Start\\WebApiConfig.cs",
@@ -124,20 +141,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "clasesController.cs",
               "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Controllers\\clasesController.cs",
               "RelativeDocumentMoniker": "Controllers\\clasesController.cs",
               "ToolTip": "D:\\DAM\\c#\\apiClassroom\\Controllers\\clasesController.cs",
               "RelativeToolTip": "Controllers\\clasesController.cs",
-              "ViewState": "AgIAAE0BAAAAAAAAAAAwwGYBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEcBAAAAAAAAAAAkwGYBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-29T12:52:45.768Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "tareasController.cs",
               "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Controllers\\tareasController.cs",
               "RelativeDocumentMoniker": "Controllers\\tareasController.cs",
@@ -145,12 +162,11 @@
               "RelativeToolTip": "Controllers\\tareasController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAwCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:31:58.737Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-29T14:31:58.737Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "tareasController.cs",
               "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Controllers\\tareasController.cs",
               "RelativeDocumentMoniker": "Controllers\\tareasController.cs",
@@ -158,12 +174,11 @@
               "RelativeToolTip": "Controllers\\tareasController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T12:56:48.828Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-29T12:56:48.828Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Error.cs",
               "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Models\\Error.cs",
               "RelativeDocumentMoniker": "Models\\Error.cs",
@@ -171,12 +186,11 @@
               "RelativeToolTip": "Models\\Error.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwCAAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T12:56:47.264Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-15T12:56:47.264Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "usuarioController.cs",
               "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Controllers\\usuarioController.cs",
               "RelativeDocumentMoniker": "Controllers\\usuarioController.cs",
@@ -184,12 +198,11 @@
               "RelativeToolTip": "Controllers\\usuarioController.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAQwBUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T15:18:23.963Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T15:18:23.963Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Web.config",
               "RelativeDocumentMoniker": "Web.config",
@@ -202,13 +215,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Clases.cs",
               "DocumentMoniker": "D:\\DAM\\c#\\apiClassroom\\Models\\Clases.cs",
               "RelativeDocumentMoniker": "Models\\Clases.cs",
               "ToolTip": "D:\\DAM\\c#\\apiClassroom\\Models\\Clases.cs",
               "RelativeToolTip": "Models\\Clases.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAUwGkAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAHsAAAAAAAAAAAA/wJoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T12:56:30.619Z",
               "EditorCaption": ""

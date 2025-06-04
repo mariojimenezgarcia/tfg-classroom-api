@@ -207,7 +207,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\anuncios.cs" />
+    <Compile Include="Controllers\anunciosController.cs" />
+    <Compile Include="Controllers\notasController.cs" />
     <Compile Include="Controllers\tareasController.cs" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
