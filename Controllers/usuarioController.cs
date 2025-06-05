@@ -35,8 +35,8 @@ namespace apiClassroom.Controllers
                     conexion.Open();
 
                     const string insertQuery = @"
-                        INSERT INTO dbo.Usuarios (nombre, email, password, intentos_fallidos, cuenta_bloqueada, fecha_cad_usuario, rol)
-                        VALUES (@nombre, @email, @password, 0, 0, NULL, @rol)";
+                        INSERT INTO dbo.Usuarios (nombre, email, password, rol)
+                        VALUES (@nombre, @email, @password, @rol)";
 
                     using (var comando = new SqlCommand(insertQuery, conexion))
                     {

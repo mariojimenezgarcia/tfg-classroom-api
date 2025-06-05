@@ -153,5 +153,29 @@ namespace apiClassroom.Models
             public List<NotaData> notas { get; set; } = new List<NotaData>();
             public List<Error> error { get; set; } = new List<Error>();
         }
+        public class VerClasesRequest
+        {
+            public string token { get; set; }
+        }
+
+        // DTO que representa una fila de la tabla Clases
+        public class ClaseData
+        {
+            public int Id { get; set; }
+            public string Nombre { get; set; }
+            public string CodigoAcceso { get; set; }
+            public int UsuariosId { get; set; }
+            public string Curso { get; set; }
+            public string Aula { get; set; }
+            public string Color { get; set; }
+            
+        }
+
+        // Response de verClases
+        public class VerClasesResponse
+        {
+            public List<ClaseData> clases { get; set; } = new List<ClaseData>();
+            public List<Error> error { get; set; } = new List<Error>();
+        }
     }
 }
