@@ -9,7 +9,7 @@ using apiClassroom.Models;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using static apiClassroom.Models.Clases;
+using static apiClassroom.Models.notas;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Data.SqlClient;
@@ -26,7 +26,7 @@ namespace clases.Controllers
     {
 
         Dictionary<Errores.Error, string> listaerrores = Errores.GetListaErrores(); // Guardar errores
-        List<Clases.Error> errorList = new List<Clases.Error>();
+        List<notas.Error> errorList = new List<notas.Error>();
         string ConexionBBDD = "Server=tfgserver2025.database.windows.net,1433;Database=tfgclassroom;User Id=admintfgsql;Password=tfgclassroom2025_;Encrypt=True;TrustServerCertificate=True;";
 
         /*
@@ -37,9 +37,9 @@ namespace clases.Controllers
 
         [HttpPost]
         [Route("ponerNota")]
-        public JObject PonerNota([FromBody] Clases.PonerNotaRequest request)
+        public JObject PonerNota([FromBody] notas.PonerNotaRequest request)
         {
-            var resultado = new Clases.PonerNotaResponse();
+            var resultado = new notas.PonerNotaResponse();
             errorList.Clear();
 
             // 1) Validar que token, idEntrega y nota sean válidos
@@ -82,7 +82,7 @@ namespace clases.Controllers
             if (rol != 1 && rol != 2)
             {
                 // Supongamos que 126 es “Permisos insuficientes para poner nota”
-                MandarError(126, "No tienes permisos para asignar una nota.");
+                MandarError((int)Errores.Error.NoPermisos, listaerrores[Errores.Error.NoPermisos]);
                 resultado.error = errorList;
                 return JObject.Parse(JsonConvert.SerializeObject(resultado));
             }
@@ -118,7 +118,7 @@ namespace clases.Controllers
             if (!entregaExiste)
             {
                 // Si no existe la entrega, devolvemos error de datos inválidos
-                MandarError((int)Errores.Error.DatosInvalidos, "La entrega indicada no existe.");
+                MandarError((int)Errores.Error.NoExisteEntrega, listaerrores[Errores.Error.NoExisteEntrega]);
                 resultado.error = errorList;
                 return JObject.Parse(JsonConvert.SerializeObject(resultado));
             }
@@ -157,9 +157,9 @@ namespace clases.Controllers
         }
         [HttpPost]
         [Route("verNotas")]
-        public JObject VerNotas([FromBody] Clases.VerNotasRequest request)
+        public JObject VerNotas([FromBody] notas.VerNotasRequest request)
         {
-            var resultado = new Clases.VerNotasResponse();
+            var resultado = new notas.VerNotasResponse();
             errorList.Clear();
 
             // 1) Validar que token no esté vacío
@@ -203,7 +203,7 @@ namespace clases.Controllers
             if (rol != 1 && rol != 3)
             {
                 // Supongamos que 127 es “Permiso insuficiente para ver notas”
-                MandarError(127, "No tienes permisos para ver estas notas.");
+                MandarError((int)Errores.Error.NoPermisos, listaerrores[Errores.Error.NoPermisos]);
                 resultado.error = errorList;
                 return JObject.Parse(JsonConvert.SerializeObject(resultado));
             }
@@ -226,7 +226,7 @@ namespace clases.Controllers
                         object result = cmdNombre.ExecuteScalar();
                         if (result == null)
                         {
-                            MandarError((int)Errores.Error.DatosInvalidos, "El usuario no existe.");
+                            MandarError((int)Errores.Error.UsuarioIncorrecto, listaerrores[Errores.Error.UsuarioIncorrecto]);
                             resultado.error = errorList;
                             return JObject.Parse(JsonConvert.SerializeObject(resultado));
                         }
@@ -270,7 +270,7 @@ namespace clases.Controllers
                         {
                             while (reader.Read())
                             {
-                                var fila = new Clases.NotaData
+                                var fila = new notas.NotaData
                                 {
                                     titulo = reader["tituloTarea"].ToString(),
                                     nota = Convert.ToDecimal(reader["notaEntrega"]),
@@ -295,7 +295,7 @@ namespace clases.Controllers
         }
         private void MandarError(int code, string description)
         {
-            var err = new Clases.Error();
+            var err = new notas.Error();
             err.codigo = code;
             err.descripcion = description;
 
@@ -305,10 +305,5 @@ namespace clases.Controllers
             }
         }
 
-        public static string Encriptar(string clave)
-        {
-            byte[] encriptado = System.Text.Encoding.Unicode.GetBytes(clave);
-            return Convert.ToBase64String(encriptado);
-        }
     }
 }

@@ -2,30 +2,39 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 using apiClassroom.Models;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json.Linq;
-using static apiClassroom.Models.Clases;
+using static apiClassroom.Models.usuario;
+using apiClassroom.funciones;
+
 
 namespace apiClassroom.Controllers
 {
     [RoutePrefix("api/usuarios")]
     public class UsuariosController : ApiController
     {
+        Dictionary<Errores.Error, string> listaerrores = Errores.GetListaErrores();
+        List<usuario.Error> errorList = new List<usuario.Error>();
         string ConexionBBDD = "Server=tfgserver2025.database.windows.net,1433;Database=tfgclassroom;User Id=admintfgsql;Password=tfgclassroom2025_;Encrypt=True;TrustServerCertificate=True;";
 
-        // CREATE: Insertar nuevo usuario
         [HttpPost]
         [Route("create")]
-        public IHttpActionResult CrearUsuario([FromBody] UsuarioRequest nuevoUsuario)
+        public JObject CrearUsuario([FromBody] usuario.UsuarioRequest nuevoUsuario)
         {
+            var respuesta = new usuario.CrearUsuarioResponse();
+            errorList.Clear();
+
+            // Validar campos obligatorios
             if (string.IsNullOrWhiteSpace(nuevoUsuario.nombre) ||
                 string.IsNullOrWhiteSpace(nuevoUsuario.email) ||
                 string.IsNullOrWhiteSpace(nuevoUsuario.password) ||
                 nuevoUsuario.rol <= 0)
             {
-                return BadRequest("Datos inválidos para crear usuario.");
+                MandarError((int)Errores.Error.DatosInvalidos, listaerrores[Errores.Error.DatosInvalidos]);
+                return JObject.FromObject(respuesta);
             }
 
             try
@@ -42,27 +51,36 @@ namespace apiClassroom.Controllers
                     {
                         comando.Parameters.AddWithValue("@nombre", nuevoUsuario.nombre);
                         comando.Parameters.AddWithValue("@email", nuevoUsuario.email);
-                        comando.Parameters.AddWithValue("@password", Encriptar(nuevoUsuario.password));
+                        comando.Parameters.AddWithValue("@password", Funciones.Encriptar(nuevoUsuario.password));
                         comando.Parameters.AddWithValue("@rol", nuevoUsuario.rol);
 
                         comando.ExecuteNonQuery();
                     }
                 }
 
-                return Ok(new { estado = "ok", mensaje = "Usuario creado correctamente." });
+                respuesta.estado = "ok";
+                respuesta.mensaje = "Usuario creado correctamente.";
+                respuesta.error = errorList;
+                return JObject.FromObject(respuesta);
             }
             catch (Exception ex)
             {
-                return InternalServerError(ex);
+                // En caso de error de BBDD
+                MandarError((int)Errores.Error.ErrorEnBBDD, listaerrores[Errores.Error.ErrorEnBBDD]);
+                return JObject.FromObject(respuesta);
             }
         }
 
-        // READ: Obtener todos los usuarios
+        // ========================================================
+        // 2) READ: Obtener todos los usuarios
+        // ========================================================
         [HttpGet]
         [Route("all")]
-        public IHttpActionResult ObtenerUsuarios()
+        public JObject ObtenerUsuarios()
         {
-            var listaUsuarios = new List<UsuarioResponse>();
+            var respuesta = new usuario.ObtenerUsuariosResponse();
+            errorList.Clear();
+
             try
             {
                 using (var conexion = new SqlConnection(ConexionBBDD))
@@ -74,7 +92,7 @@ namespace apiClassroom.Controllers
                     {
                         while (lector.Read())
                         {
-                            listaUsuarios.Add(new UsuarioResponse
+                            respuesta.usuarios.Add(new usuario.UsuarioData
                             {
                                 id = (int)lector["id"],
                                 nombre = lector["nombre"].ToString(),
@@ -84,19 +102,37 @@ namespace apiClassroom.Controllers
                         }
                     }
                 }
-                return Ok(listaUsuarios);
+
+                respuesta.error = errorList;
+                return JObject.FromObject(respuesta);
             }
             catch (Exception ex)
             {
-                return InternalServerError(ex);
+                MandarError((int)Errores.Error.ErrorEnBBDD, listaerrores[Errores.Error.ErrorEnBBDD]);
+                return JObject.FromObject(respuesta);
             }
         }
 
-        // UPDATE: Actualizar usuario por ID
+        // ========================================================
+        // 3) UPDATE: Actualizar usuario por ID
+        // ========================================================
         [HttpPut]
         [Route("update/{id}")]
-        public IHttpActionResult ActualizarUsuario(int id, [FromBody] UsuarioRequest usuario)
+        public JObject ActualizarUsuario(int id, [FromBody] usuario.UsuarioRequest usuario)
         {
+            var respuesta = new usuario.ActualizarUsuarioResponse();
+            errorList.Clear();
+
+            // Validar campos obligatorios
+            if (string.IsNullOrWhiteSpace(usuario.nombre) ||
+                string.IsNullOrWhiteSpace(usuario.email) ||
+                string.IsNullOrWhiteSpace(usuario.password) ||
+                usuario.rol <= 0)
+            {
+                MandarError((int)Errores.Error.DatosInvalidos, listaerrores[Errores.Error.DatosInvalidos]);
+                return JObject.FromObject(respuesta);
+            }
+
             try
             {
                 using (var conexion = new SqlConnection(ConexionBBDD))
@@ -112,27 +148,40 @@ namespace apiClassroom.Controllers
                         comando.Parameters.AddWithValue("@id", id);
                         comando.Parameters.AddWithValue("@nombre", usuario.nombre);
                         comando.Parameters.AddWithValue("@email", usuario.email);
-                        comando.Parameters.AddWithValue("@password", Encriptar(usuario.password));
+                        comando.Parameters.AddWithValue("@password", Funciones.Encriptar(usuario.password));
                         comando.Parameters.AddWithValue("@rol", usuario.rol);
 
                         int filas = comando.ExecuteNonQuery();
                         if (filas == 0)
-                            return NotFound();
+                        {
+                            MandarError((int)Errores.Error.DatosInvalidos, "Usuario no encontrado.");
+                            return JObject.FromObject(respuesta);
+                        }
                     }
                 }
-                return Ok(new { estado = "ok", mensaje = "Usuario actualizado correctamente." });
+
+                respuesta.estado = "ok";
+                respuesta.mensaje = "Usuario actualizado correctamente.";
+                respuesta.error = errorList;
+                return JObject.FromObject(respuesta);
             }
             catch (Exception ex)
             {
-                return InternalServerError(ex);
+                MandarError((int)Errores.Error.ErrorEnBBDD, listaerrores[Errores.Error.ErrorEnBBDD]);
+                return JObject.FromObject(respuesta);
             }
         }
 
-        // DELETE: Eliminar usuario por ID
+        // ========================================================
+        // 4) DELETE: Eliminar usuario por ID
+        // ========================================================
         [HttpDelete]
         [Route("delete/{id}")]
-        public IHttpActionResult EliminarUsuario(int id)
+        public JObject EliminarUsuario(int id)
         {
+            var respuesta = new usuario.EliminarUsuarioResponse();
+            errorList.Clear();
+
             try
             {
                 using (var conexion = new SqlConnection(ConexionBBDD))
@@ -144,23 +193,38 @@ namespace apiClassroom.Controllers
                         comando.Parameters.AddWithValue("@id", id);
                         int filas = comando.ExecuteNonQuery();
                         if (filas == 0)
-                            return NotFound();
+                        {
+                            MandarError((int)Errores.Error.DatosInvalidos, "Usuario no encontrado.");
+                            return JObject.FromObject(respuesta);
+                        }
                     }
                 }
-                return Ok(new { estado = "ok", mensaje = "Usuario eliminado correctamente." });
+
+                respuesta.estado = "ok";
+                respuesta.mensaje = "Usuario eliminado correctamente.";
+                respuesta.error = errorList;
+                return JObject.FromObject(respuesta);
             }
             catch (Exception ex)
             {
-                return InternalServerError(ex);
+                MandarError((int)Errores.Error.ErrorEnBBDD, listaerrores[Errores.Error.ErrorEnBBDD]);
+                return JObject.FromObject(respuesta);
+            }
+        }
+        private void MandarError(int code, string description)
+        {
+            var err = new usuario.Error
+            {
+                codigo = code,
+                descripcion = description
+            };
+
+            if (errorList.Count == 0)
+            {
+                errorList.Add(err);
             }
         }
 
-        private static string Encriptar(string clave)
-        {
-            byte[] encriptado = System.Text.Encoding.Unicode.GetBytes(clave);
-            return Convert.ToBase64String(encriptado);
-        }
 
-     
     }
 }

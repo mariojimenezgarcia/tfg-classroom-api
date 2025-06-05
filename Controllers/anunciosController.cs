@@ -9,7 +9,7 @@ using apiClassroom.Models;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using static apiClassroom.Models.Clases;
+using static apiClassroom.Models.anuncios;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Data.SqlClient;
@@ -26,7 +26,7 @@ namespace clases.Controllers
     {
 
         Dictionary<Errores.Error, string> listaerrores = Errores.GetListaErrores(); // Guardar errores
-        List<Clases.Error> errorList = new List<Clases.Error>();
+        List<anuncios.Error> errorList = new List<anuncios.Error>();
         string ConexionBBDD = "Server=tfgserver2025.database.windows.net,1433;Database=tfgclassroom;User Id=admintfgsql;Password=tfgclassroom2025_;Encrypt=True;TrustServerCertificate=True;";
 
         /*
@@ -36,10 +36,10 @@ namespace clases.Controllers
          */
         [HttpPost]
         [Route("crearAnuncios")]
-        public JObject Anuncios([FromBody] Clases.AnuncioRequest request)
+        public JObject Anuncios([FromBody] anuncios.AnuncioRequest request)
         {
             // 0) Prepara la respuesta y limpia errores previos
-            var resultado = new Clases.AnuncioResponse();
+            var resultado = new anuncios.AnuncioResponse();
             errorList.Clear();
 
             // 1) Verificar que token, contenido e idClase no estén vacíos / inválidos
@@ -84,7 +84,7 @@ namespace clases.Controllers
             if (rol != 1 && rol != 2 && rol != 3)
             {
                 // Código 123: permiso insuficiente para publicar anuncio
-                MandarError(123, "No tienes permisos para crear un anuncio.");
+                MandarError((int)Errores.Error.NoPermisos, listaerrores[Errores.Error.NoPermisos]);
                 resultado.error = errorList;
                 return JObject.Parse(JsonConvert.SerializeObject(resultado));
             }
@@ -111,7 +111,7 @@ namespace clases.Controllers
                         if (count == 0)
                         {
                             // El usuario no está inscrito en esa clase
-                            MandarError(125, "No estás inscrito en esta clase; no puedes crear anuncios.");
+                            MandarError((int)Errores.Error.NoInscritoClase, listaerrores[Errores.Error.NoInscritoClase]);
                             resultado.error = errorList;
                             return JObject.Parse(JsonConvert.SerializeObject(resultado));
                         }
@@ -181,8 +181,7 @@ namespace clases.Controllers
                             else
                             {
                                 // Si por alguna razón no encontramos el anuncio recién insertado
-                                MandarError((int)Errores.Error.ErrorEnBBDD,
-                                            "No se pudo recuperar el anuncio tras insertarlo.");
+                                MandarError((int)Errores.Error.ErrorEnBBDD, listaerrores[Errores.Error.ErrorEnBBDD]);
                                 resultado.error = errorList;
                                 return JObject.Parse(JsonConvert.SerializeObject(resultado));
                             }
@@ -205,10 +204,10 @@ namespace clases.Controllers
 
         [HttpPost]
         [Route("VisualizarAnuncios")]
-        public JObject VisualizarAnuncios([FromBody] Clases.VisualizarAnunciosRequest request)
+        public JObject VisualizarAnuncios([FromBody] anuncios.VisualizarAnunciosRequest request)
         {
             // 0) Preparamos la respuesta y limpiamos errores previos
-            var resultado = new Clases.VisualizarAnunciosResponse();
+            var resultado = new anuncios.VisualizarAnunciosResponse();
             errorList.Clear();
 
             // 1) Validar que token e idClase sean válidos
@@ -269,7 +268,7 @@ namespace clases.Controllers
                         if (count == 0)
                         {
                             // El usuario NO está inscrito en esa clase → no puede ver anuncios
-                            MandarError(124, "No estás inscrito en la clase solicitada.");
+                            MandarError((int)Errores.Error.NoInscritoClase, listaerrores[Errores.Error.NoInscritoClase]);
                             resultado.error = errorList;
                             return JObject.Parse(JsonConvert.SerializeObject(resultado));
                         }
@@ -309,7 +308,7 @@ namespace clases.Controllers
                         {
                             while (reader.Read())
                             {
-                                var anuncio = new Clases.AnuncioData
+                                var anuncio = new anuncios.AnuncioData
                                 {
                                     nombreUsuario = reader["nombreUsuario"].ToString(),
                                     contenido = reader["contenido"].ToString(),
@@ -338,7 +337,7 @@ namespace clases.Controllers
 
         private void MandarError(int code, string description)
         {
-            var err = new Clases.Error();
+            var err = new anuncios.Error();
             err.codigo = code;
             err.descripcion = description;
 

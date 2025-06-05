@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\models\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\controllers\\clasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\clasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|c:\\users\\developer\\desktop\\tfg\\tfg-classroom-api\\funciones\\funciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:funciones\\funciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\controllers\\tareascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\tareascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\models\\error.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\error.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|c:\\users\\developer\\desktop\\tfg\\tfg-classroom-api\\models\\classerr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\classerr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\controllers\\anuncioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\anuncioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\controllers\\clasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\clasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|c:\\users\\developer\\desktop\\tfg\\tfg-classroom-api\\controllers\\classroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,12 +35,32 @@
       "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\notascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\controllers\\anuncioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\anuncioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|c:\\users\\developer\\desktop\\tfg\\tfg-classroom-api\\controllers\\tareascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\tareascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\models\\error.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\error.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|c:\\users\\developer\\desktop\\tfg\\tfg-classroom-api\\models\\anuncios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\anuncios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|c:\\users\\developer\\desktop\\tfg\\tfg-classroom-api\\models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\models\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|c:\\users\\developer\\desktop\\tfg\\tfg-classroom-api\\models\\notas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\notas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|c:\\users\\developer\\desktop\\tfg\\tfg-classroom-api\\models\\tareas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\tareas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|c:\\users\\developer\\desktop\\tfg\\tfg-classroom-api\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
@@ -47,7 +75,7 @@
       "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\controllers\\tareascontroller.cs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|c:\\users\\developer\\desktop\\tfg\\tfg-classroom-api\\controllers\\tareascontroller.cs||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AC1BBFEA-A7BC-4290-A55B-559F22B51AA2}|apiClassroom.csproj|solutionrelative:controllers\\tareascontroller.cs||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -58,48 +86,141 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
+              "Title": "classErr.cs",
+              "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\classErr.cs",
+              "RelativeDocumentMoniker": "Models\\classErr.cs",
+              "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\classErr.cs",
+              "RelativeToolTip": "Models\\classErr.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T11:04:21.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Funciones.cs",
+              "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\funciones\\Funciones.cs",
+              "RelativeDocumentMoniker": "funciones\\Funciones.cs",
+              "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\funciones\\Funciones.cs",
+              "RelativeToolTip": "funciones\\Funciones.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T10:34:26.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\usuario.cs",
+              "RelativeDocumentMoniker": "Models\\usuario.cs",
+              "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\usuario.cs",
+              "RelativeToolTip": "Models\\usuario.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAYwEQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T10:01:28.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "login.cs",
+              "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\login.cs",
+              "RelativeDocumentMoniker": "Models\\login.cs",
+              "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\login.cs",
+              "RelativeToolTip": "Models\\login.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T10:00:16.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "tareas.cs",
+              "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\tareas.cs",
+              "RelativeDocumentMoniker": "Models\\tareas.cs",
+              "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\tareas.cs",
+              "RelativeToolTip": "Models\\tareas.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAIwFoAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T09:58:34.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "notas.cs",
+              "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\notas.cs",
+              "RelativeDocumentMoniker": "Models\\notas.cs",
+              "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\notas.cs",
+              "RelativeToolTip": "Models\\notas.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAIwCUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T09:58:14.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "anuncios.cs",
+              "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\anuncios.cs",
+              "RelativeDocumentMoniker": "Models\\anuncios.cs",
+              "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\anuncios.cs",
+              "RelativeToolTip": "Models\\anuncios.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAIwC4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T09:58:00.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "notasController.cs",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\notasController.cs",
               "RelativeDocumentMoniker": "Controllers\\notasController.cs",
               "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\notasController.cs",
               "RelativeToolTip": "Controllers\\notasController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAgwBcAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAQBAAAAAAAAAAAnwDIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T16:31:51.491Z"
+              "WhenOpened": "2025-06-04T16:31:51.491Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "anunciosController.cs",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\anunciosController.cs",
               "RelativeDocumentMoniker": "Controllers\\anunciosController.cs",
               "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\anunciosController.cs",
               "RelativeToolTip": "Controllers\\anunciosController.cs",
-              "ViewState": "AgIAAK8AAAAAAAAAAAAIwMwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEBAAAAAAAAAAAAwF8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T21:17:10.444Z"
+              "WhenOpened": "2025-06-03T21:17:10.444Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "classroomController.cs",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\classroomController.cs",
               "RelativeDocumentMoniker": "Controllers\\classroomController.cs",
               "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\classroomController.cs",
               "RelativeToolTip": "Controllers\\classroomController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAcwCsAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAMwBAAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T12:55:11.544Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "packages.config",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\packages.config",
               "RelativeDocumentMoniker": "packages.config",
@@ -111,7 +232,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "WebApiConfig.cs",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\App_Start\\WebApiConfig.cs",
               "RelativeDocumentMoniker": "App_Start\\WebApiConfig.cs",
@@ -123,33 +244,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "clasesController.cs",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\clasesController.cs",
               "RelativeDocumentMoniker": "Controllers\\clasesController.cs",
               "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\clasesController.cs",
               "RelativeToolTip": "Controllers\\clasesController.cs",
-              "ViewState": "AgIAAIkBAAAAAAAAAAAowKEBAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAnwBAAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-29T12:52:45.768Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "tareasController.cs",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\tareasController.cs",
               "RelativeDocumentMoniker": "Controllers\\tareasController.cs",
               "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\tareasController.cs",
               "RelativeToolTip": "Controllers\\tareasController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAANABAAAAAAAAAAAnwPoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-29T14:31:58.737Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 18,
               "Title": "tareasController.cs",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\tareasController.cs",
               "RelativeDocumentMoniker": "Controllers\\tareasController.cs",
@@ -162,32 +283,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "Error.cs",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\Error.cs",
               "RelativeDocumentMoniker": "Models\\Error.cs",
               "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\Error.cs",
               "RelativeToolTip": "Models\\Error.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCAAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T12:56:47.264Z"
+              "WhenOpened": "2025-05-15T12:56:47.264Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "usuarioController.cs",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\usuarioController.cs",
               "RelativeDocumentMoniker": "Controllers\\usuarioController.cs",
               "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Controllers\\usuarioController.cs",
               "RelativeToolTip": "Controllers\\usuarioController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACYAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAIwMwAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-25T15:18:23.963Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "Web.config",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Web.config",
               "RelativeDocumentMoniker": "Web.config",
@@ -200,13 +322,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 11,
               "Title": "Clases.cs",
               "DocumentMoniker": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\Clases.cs",
               "RelativeDocumentMoniker": "Models\\Clases.cs",
               "ToolTip": "C:\\Users\\Developer\\Desktop\\tfg\\tfg-classroom-api\\Models\\Clases.cs",
               "RelativeToolTip": "Models\\Clases.cs",
-              "ViewState": "AgIAAI4AAAAAAAAAAAAqwKoAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAA9wFsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T12:56:30.619Z",
               "EditorCaption": ""

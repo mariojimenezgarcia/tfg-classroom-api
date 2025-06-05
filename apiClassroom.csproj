@@ -218,11 +218,17 @@
     <Compile Include="Controllers\clasesController.cs" />
     <Compile Include="Controllers\classroomController.cs" />
     <Compile Include="Controllers\usuarioController.cs" />
+    <Compile Include="funciones\Funciones.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\anuncios.cs" />
     <Compile Include="Models\Clases.cs" />
     <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\login.cs" />
+    <Compile Include="Models\notas.cs" />
+    <Compile Include="Models\tareas.cs" />
+    <Compile Include="Models\usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,20 +9,6 @@ namespace apiClassroom.Models
     public class Clases
     {
 
-        public class LoginRequest
-        {
-            public string email { get; set; }
-            public string password { get; set; }
-        }
-
-        [Serializable]
-        public class LoginResponse
-        {
-            public string token { get; set; }
-            //public bool administrador { get; set; }
-            public List<Error> error { get; set; }
-            public string email { get; set; }
-        }
 
         [Serializable]
         public class Error
@@ -31,21 +17,7 @@ namespace apiClassroom.Models
             public string descripcion { get; set; }
         }
 
-        public class UsuarioRequest
-        {
-            public string nombre { get; set; }
-            public string email { get; set; }
-            public string password { get; set; }
-            public int rol { get; set; }
-        }
-
-        public class UsuarioResponse
-        {
-            public int id { get; set; }
-            public string nombre { get; set; }
-            public string email { get; set; }
-            public int rol { get; set; }
-        }
+   
         public class CrearClaseRequest
         {
             public string nombre { get; set; }
@@ -82,82 +54,7 @@ namespace apiClassroom.Models
             // Lista de errores (vacía si todo ha ido bien)
             public List<Error> error { get; set; } = new List<Error>();
         }
-        public class AnuncioRequest
-        {
-            public string token { get; set; }
-            public string contenido { get; set; }
-            public int idClase { get; set; }
-        }
-
-        public class AnuncioResponse
-        {
-            public string nombreUsuario { get; set; }
-            public string contenido { get; set; }
-            public string fechaCreacion { get; set; }
-            public List<Error> error { get; set; } = new List<Error>();
-        }
-        public class VisualizarAnunciosRequest
-        {
-            public string token { get; set; }
-            public int idClase { get; set; }
-        }
-
-        // DTO para devolver cada anuncio
-        public class AnuncioData
-        {
-            public string nombreUsuario { get; set; }
-            public string contenido { get; set; }
-            public string fechaCreacion { get; set; }
-        }
-
-        // Response de visualizar anuncios
-        public class VisualizarAnunciosResponse
-        {
-            // Lista de anuncios encontrados
-            public List<AnuncioData> anuncios { get; set; } = new List<AnuncioData>();
-
-            // Lista de errores (vacía si todo OK)
-            public List<Error> error { get; set; } = new List<Error>();
-        }
-        public class PonerNotaRequest
-        {
-            public string token { get; set; }
-            public int idEntrega { get; set; }
-            public decimal nota { get; set; } // o int, según tu diseño; aquí uso decimal por si quieres notas con decimales
-        }
-
-        // 2. Response para poner nota
-        public class PonerNotaResponse
-        {
-            public string mensaje { get; set; }
-            public List<Error> error { get; set; } = new List<Error>();
-        }
-
-        // Tu clase Error ya existente:
-        public class VerNotasRequest
-        {
-            public string token { get; set; }
-        }
-
-        // 2. DTO para cada fila de “ver notas”
-        public class NotaData
-        {
-            public string titulo { get; set; }
-            public decimal nota { get; set; }
-            public string nombreUsuario { get; set; }
-        }
-
-        // 3. Response para ver notas
-        public class VerNotasResponse
-        {
-            public List<NotaData> notas { get; set; } = new List<NotaData>();
-            public List<Error> error { get; set; } = new List<Error>();
-        }
-        public class VerClasesRequest
-        {
-            public string token { get; set; }
-        }
-
+       
         // DTO que representa una fila de la tabla Clases
         public class ClaseData
         {
@@ -177,5 +74,23 @@ namespace apiClassroom.Models
             public List<ClaseData> clases { get; set; } = new List<ClaseData>();
             public List<Error> error { get; set; } = new List<Error>();
         }
+        public class VerAlumnosClasesRequest
+        {
+            public string token { get; set; }
+            public int idClase { get; set; }
+        }
+
+        // Response: lista de nombres de alumnos + posibles errores
+        public class VerAlumnosClaseResponse
+        {
+            public List<string> alumnos { get; set; } = new List<string>();
+            public List<Error> error { get; set; } = new List<Error>();
+        }
+        public class VerClasesRequest
+        {
+            public string token { get; set; }
+        }
+
+
     }
 }

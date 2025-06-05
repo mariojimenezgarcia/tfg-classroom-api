@@ -14,6 +14,7 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Data.SqlClient;
 using System.Linq;
+using apiClassroom.funciones;
 
 
 
@@ -28,10 +29,7 @@ namespace clases.Controllers
         Dictionary<Errores.Error, string> listaerrores = Errores.GetListaErrores(); // Guardar errores
         List<Clases.Error> errorList = new List<Clases.Error>();
         string ConexionBBDD = "Server=tfgserver2025.database.windows.net,1433;Database=tfgclassroom;User Id=admintfgsql;Password=tfgclassroom2025_;Encrypt=True;TrustServerCertificate=True;";
-        private readonly string _jwtSecret = System.Configuration.ConfigurationManager.AppSettings["Jwt:Secret"];
-        private readonly string _jwtIssuer = System.Configuration.ConfigurationManager.AppSettings["Jwt:Issuer"];
-        private readonly string _jwtAudience = System.Configuration.ConfigurationManager.AppSettings["Jwt:Audience"];
-        private readonly int _jwtExpiry = int.Parse(System.Configuration.ConfigurationManager.AppSettings["Jwt:ExpiryMinutes"] ?? "60");
+       
         /*
          * ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
          *                                                                             𝐅𝐔𝐍𝐂𝐈𝐎𝐍𝐄𝐒 𝐄𝐗𝐓𝐄𝐑𝐍𝐀𝐒
@@ -88,13 +86,13 @@ namespace clases.Controllers
             // 3) Verificar que solo rol = 1 ó 2 pueden crear clase
             if (rol != 1 && rol != 2)
             {
-                MandarError(120, "No tienes permisos para crear una clase.");
+                MandarError((int)Errores.Error.NoPermisos, listaerrores[Errores.Error.NoPermisos]);
                 resultado.error = errorList;
                 return JObject.Parse(JsonConvert.SerializeObject(resultado));
             }
 
             // 4) Generar código de 6 caracteres (alfanumérico)
-            string codigoAcceso = GenerarCodigoAlfanumerico(6);
+            string codigoAcceso = Funciones.GenerarCodigoAlfanumerico(6);
 
             // 5) Insertar en Clases y luego en UsuarioClase
             int nuevaClaseId = 0;
@@ -205,7 +203,7 @@ namespace clases.Controllers
             if (rol != 1 && rol != 3)
             {
                 // Supongamos que 121 es “Permisos insuficientes para unirse”
-                MandarError(121, "No tienes permisos para unirte a una clase.");
+                MandarError((int)Errores.Error.NoPermisos, listaerrores[Errores.Error.NoPermisos]);
                 resultado.error = errorList;
                 return JObject.Parse(JsonConvert.SerializeObject(resultado));
             }
@@ -231,7 +229,7 @@ namespace clases.Controllers
                         if (resultadoConsulta == null)
                         {
                             // No existe ninguna clase con ese código
-                            MandarError((int)Errores.Error.DatosInvalidos, "Código de clase no encontrado.");
+                            MandarError((int)Errores.Error.NoClase, listaerrores[Errores.Error.NoClase]);
                             resultado.error = errorList;
                             return JObject.Parse(JsonConvert.SerializeObject(resultado));
                         }
@@ -270,7 +268,7 @@ namespace clases.Controllers
                         if (count > 0)
                         {
                             // El usuario ya estaba registrado en esa clase
-                            MandarError(122, "Usuario ya estaba registrado en esta clase.");
+                            MandarError((int)Errores.Error.YaRegistrado, listaerrores[Errores.Error.YaRegistrado]);
                             resultado.error = errorList;
                             return JObject.Parse(JsonConvert.SerializeObject(resultado));
                         }
@@ -361,14 +359,6 @@ namespace clases.Controllers
                 return JObject.Parse(JsonConvert.SerializeObject(resultado));
             }
 
-            // 3) Verificar permisos: solo rol = 3 (alumno) puede ver sus clases
-            if (rol != 3)
-            {
-                // Código 128: permisos insuficientes
-                MandarError(128, "No tienes permisos para ver las clases.");
-                resultado.error = errorList;
-                return JObject.Parse(JsonConvert.SerializeObject(resultado));
-            }
 
             // 4) Consultar la lista de clases a través de UsuarioClase
             try
@@ -426,23 +416,95 @@ namespace clases.Controllers
             resultado.error = errorList;
             return JObject.Parse(JsonConvert.SerializeObject(resultado));
         }
-
-        private string GenerarCodigoAlfanumerico(int longitud)
+        [HttpPost]
+        [Route("verAlumnosClase")]
+        public JObject VerAlumnosClase([FromBody] Clases.VerAlumnosClasesRequest request)
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                               + "abcdefghijklmnopqrstuvwxyz"
-                               + "0123456789";
-            var sb = new StringBuilder();
-            var rng = new Random();
+            var resultado = new Clases.VerAlumnosClaseResponse();
+            errorList.Clear();
 
-            for (int i = 0; i < longitud; i++)
+            // 1) Validar que token e idClase no estén vacíos o inválidos
+            if (string.IsNullOrWhiteSpace(request.token) || request.idClase <= 0)
             {
-                int idx = rng.Next(0, chars.Length);
-                sb.Append(chars[idx]);
+                MandarError((int)Errores.Error.DatosInvalidos, listaerrores[Errores.Error.DatosInvalidos]);
+                resultado.error = errorList;
+                return JObject.Parse(JsonConvert.SerializeObject(resultado));
             }
 
-            return sb.ToString();
+            // 2) Leer el JWT y extraer userId + rol
+            int userId = 0;
+            int rol = 0;
+            try
+            {
+                var handler = new JwtSecurityTokenHandler();
+                var tokenJwt = handler.ReadJwtToken(request.token);
+
+                var subClaim = tokenJwt.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub);
+                var rolClaim = tokenJwt.Claims.FirstOrDefault(c => c.Type == "rol");
+
+                if (subClaim == null || rolClaim == null)
+                {
+                    MandarError((int)Errores.Error.TokenInvalido, listaerrores[Errores.Error.TokenInvalido]);
+                    resultado.error = errorList;
+                    return JObject.Parse(JsonConvert.SerializeObject(resultado));
+                }
+
+                userId = int.Parse(subClaim.Value);
+                rol = int.Parse(rolClaim.Value);
+            }
+            catch (Exception)
+            {
+                MandarError((int)Errores.Error.TokenInvalido, listaerrores[Errores.Error.TokenInvalido]);
+                resultado.error = errorList;
+                return JObject.Parse(JsonConvert.SerializeObject(resultado));
+            }
+
+
+            // 4) Consultar la lista de nombres de alumnos (rol = 3) inscritos en esa clase
+            try
+            {
+                using (var conexion = new SqlConnection(ConexionBBDD))
+                {
+                    conexion.Open();
+
+                    const string sqlVerAlumnos = @"
+                SELECT 
+                    u.nombre
+                FROM [dbo].[UsuarioClase] uc
+                INNER JOIN [dbo].[Usuarios] u
+                    ON uc.usuarioId = u.id
+                WHERE 
+                    uc.claseId = @idClase
+                    AND u.rol    = 3
+            ";
+
+                    using (var cmd = new SqlCommand(sqlVerAlumnos, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@idClase", request.idClase);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                resultado.alumnos.Add(reader.GetString(reader.GetOrdinal("nombre")));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MandarError((int)Errores.Error.ErrorEnBBDD, listaerrores[Errores.Error.ErrorEnBBDD]);
+                resultado.error = errorList;
+                return JObject.Parse(JsonConvert.SerializeObject(resultado));
+            }
+
+            // 5) Devolver la lista (vacía si no hay alumnos) y sin errores
+            resultado.error = errorList;
+            return JObject.Parse(JsonConvert.SerializeObject(resultado));
         }
+
+
 
 
         private void MandarError(int code, string description)

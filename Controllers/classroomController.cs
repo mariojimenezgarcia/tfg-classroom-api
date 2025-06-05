@@ -9,11 +9,12 @@ using apiClassroom.Models;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using static apiClassroom.Models.Clases;
+using static apiClassroom.Models.login;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Data.SqlClient;
 using System.Linq;
+using apiClassroom.funciones;
 
 
 
@@ -26,7 +27,7 @@ namespace apiClassroom.Controllers
     {
 
         Dictionary<Errores.Error, string> listaerrores = Errores.GetListaErrores(); // Guardar errores
-        List<Clases.Error> errorList = new List<Clases.Error>();
+        List<login.Error> errorList = new List<login.Error>();
         string ConexionBBDD = "Server=tfgserver2025.database.windows.net,1433;Database=tfgclassroom;User Id=admintfgsql;Password=tfgclassroom2025_;Encrypt=True;TrustServerCertificate=True;";
         private readonly string _jwtSecret = System.Configuration.ConfigurationManager.AppSettings["Jwt:Secret"];
         private readonly string _jwtIssuer = System.Configuration.ConfigurationManager.AppSettings["Jwt:Issuer"];
@@ -40,14 +41,14 @@ namespace apiClassroom.Controllers
 
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("Login")]
-        public JObject Login([FromBody] Models.Clases.LoginRequest login)
+        public JObject Login([FromBody] Models.login.LoginRequest login)
         {
-            var resultado = new Clases.LoginResponse();
+            var resultado = new login.LoginResponse();
             var error = new Clases.Error();
             JObject response = new JObject();
             int Id = 0;
             //encripta la password para guaradarla codificada en la base de datos
-            var claveencriptada = Encriptar(login.password);
+            var claveencriptada = Funciones.Encriptar(login.password);
             //si email o password vienen null
             if (string.IsNullOrWhiteSpace(login.email) || string.IsNullOrWhiteSpace(login.password))
             {
@@ -136,7 +137,7 @@ namespace apiClassroom.Controllers
 
         private void MandarError(int code, string description)
         {
-            var err = new Clases.Error();
+            var err = new login.Error();
             err.codigo = code;
             err.descripcion = description;
 
@@ -146,10 +147,6 @@ namespace apiClassroom.Controllers
             }
         }
 
-        public static string Encriptar(string clave)
-        {
-            byte[] encriptado = System.Text.Encoding.Unicode.GetBytes(clave);
-            return Convert.ToBase64String(encriptado);
-        }
+        
     }
 }
